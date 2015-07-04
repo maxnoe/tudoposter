@@ -1,0 +1,181 @@
+\ProvidesPackage{beamerthementudoposter}
+
+%% packages %%
+\RequirePackage{xcolor}
+\RequirePackage{tcolorbox}
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
+
+% general font settings
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\ifluatex%
+  \RequirePackage{fontspec}
+  \setromanfont{Linux Libertine O}
+  \setsansfont{Linux Biolinum O}
+\else
+  \ifxetex
+    \RequirePackage{fontspec}
+    \setromanfont{Linux Libertine O}
+    \setsansfont{Linux Biolinum O}
+  \else
+    \RequirePackage{libertine}
+  \fi
+\fi
+
+%% add numbers to figures and tables
+\setbeamertemplate{caption}[numbered]
+
+%% color definitions %%
+\definecolor{tugreen}{RGB}{132, 186, 26}
+\colorlet{tudark}{tugreen!70!black}
+\colorlet{tulight}{tugreen!10!white}
+\colorlet{tuYellow}{yellow!70!red}
+\colorlet{tuRed}{red!80!black}
+
+%% bibliography settings
+\setbeamertemplate{bibliography item}[text]
+
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+\setbeamercolor{bibliography item}{fg=tudark}
+
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+
+
+% replace beamer blocks with tcolorboxes
+\newtcolorbox{myblock}[2][1]{
+  leftright skip=5mm,
+  before skip=10mm,
+  after skip=10mm,
+  boxrule=5pt,
+  sharp corners,
+  fonttitle=\usebeamerfont{block title},
+  fontupper=\usebeamerfont{block body},
+  fontlower=\usebeamerfont{block body},
+  boxsep=5mm,
+  adjusted title={#2},
+  #1,
+}
+
+\renewenvironment{block}[2][]{%
+  \usebeamercolor{block body}%
+  \usebeamercolor{block title}%
+  \tcbset{%
+    colback=block body.bg,
+    colframe=block title.bg,
+    colbacktitle=block title.bg,
+    coltitle=block title.fg,
+  }%
+  \begin{myblock}[#1]{#2}
+}{%
+  \par
+  \end{myblock}
+}
+\renewenvironment{alertblock}[2][]{%
+  \usebeamercolor{block body alerted}
+  \usebeamercolor{block title alerted}
+  \tcbset{%
+    colback=block body alerted.bg,
+    colframe=block title alerted.bg,
+    colbacktitle=block title alerted.bg,
+    coltitle=block title alerted.fg ,
+  }%
+  \begin{myblock}[#1]{#2}
+}{%
+  \par
+  \end{myblock}
+}
+\renewenvironment{exampleblock}[2][]{%
+  \usebeamercolor{block body example}
+  \usebeamercolor{block title example}
+  \tcbset{%
+    colback=block body example.bg,
+    colframe=block title example.bg,
+    colbacktitle=block title example.bg,
+    coltitle=block title example.fg ,
+  }%
+  \begin{myblock}[#1]{#2}
+}{%
+  \end{myblock}
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{headline}{
+  \vspace*{2cm}
+  \hspace*{2cm}
+  \begin{minipage}{0.25\paperwidth-2cm}%
+    \begin{beamercolorbox}[wd=\linewidth, left]{institute}%
+      \vbox to 10cm{\usebeamercolor{institute}\usebeamerfont{institute}\inserttitlegraphic\par\vfil}%
+    \end{beamercolorbox}%
+  \end{minipage}%
+  \hspace*{1cm}%
+  \begin{minipage}{0.5\paperwidth-2cm}%
+    \begin{beamercolorbox}[wd=\linewidth, center]{title}%
+      \usebeamercolor{title}\usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vspace*{1cm}
+    \begin{beamercolorbox}[wd=\linewidth, center]{author}%
+      \usebeamercolor{author}\usebeamerfont{author}\insertauthor\par%
+    \end{beamercolorbox}%
+    \vspace*{1cm}
+    \begin{beamercolorbox}[wd=\linewidth, center]{date}%
+      \usebeamercolor{date}\usebeamerfont{date}\insertdate\par%
+    \end{beamercolorbox}%
+  \end{minipage}%
+  \hspace*{1cm}%
+  \begin{minipage}{0.25\paperwidth-2cm}%
+    \begin{beamercolorbox}[wd=\linewidth, right]{institute}%
+       \vbox to 10cm{\usebeamercolor{institute}\usebeamerfont{institute}\insertinstitute\par\vfil}%%
+    \end{beamercolorbox}%
+  \end{minipage}%
+  \vspace*{1cm}%
+}
+
+\setbeamertemplate{footline}{\vspace*{1cm}}
+
+%% fonts %%
+
+\setbeamerfont{normal text}{size=\normalsize, family=\rmfamily}
+
+\setbeamerfont{title}{size=\Huge, family=\sffamily, series=\bfseries}
+\setbeamerfont{author}{size=\LARGE, family=\rmfamily}
+\setbeamerfont{date}{size=\LARGE, family=\rmfamily}
+\setbeamerfont{institute}{size=\Large}
+
+\setbeamerfont{block title}{size=\LARGE, family=\sffamily, series=\bfseries}
+
+\setbeamerfont{caption name}{size=\normalsize, family=\sffamily, series=\bfseries}
+\setbeamerfont{caption}{size=\normalsize}
+
+%% colors %%
+
+\setbeamercolor*{author}{fg=black, bg=white}
+\setbeamercolor*{institute}{fg=black, bg=gray}
+
+\setbeamercolor*{headline}{fg=tugreen, bg=white}
+\setbeamercolor*{footline}{fg=tugreen, bg=white}
+
+\setbeamercolor*{title}{fg=black, bg=white}
+\setbeamercolor*{institute}{fg=black, bg=white}
+
+\setbeamercolor*{item}{fg=tugreen, bg=black}
+
+\setbeamercolor*{block title}{fg=white, bg=tugreen}
+\setbeamercolor*{block body}{fg=black, bg=tulight}
+
+\setbeamercolor*{block title alerted}{fg=white, bg=tuRed}
+\setbeamercolor*{block body alerted}{fg=black, bg=tuRed!10!white}
+
+\setbeamercolor*{block title example}{fg=white, bg=tuYellow}
+\setbeamercolor*{block body example}{fg=black, bg=tuYellow!10!white}
+
+\setbeamercolor*{caption name}{fg=tudark}
+\setbeamercolor*{caption}{fg=black}

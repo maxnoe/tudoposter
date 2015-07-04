@@ -1,0 +1,142 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\documentclass[t]{beamer}
+
+\usepackage[
+  orientation=portrait,
+  size=a0,
+  scale=1.0,
+]{beamerposter}
+
+\usetheme{tudoposter}
+
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{german}
+
+\usepackage{csquotes}
+\usepackage{microtype}
+\usepackage{mathtools}
+
+\usepackage{blindtext}
+
+\usepackage{multicol}
+\setlength{\columnsep}{1em}
+
+\usepackage{graphicx}
+
+%% this is used to create an inline bibliography
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{biblatex-phys.bib}
+
+\DeclareFieldFormat*{title}{\textit{#1}}
+\renewcommand*{\bibfont}{\footnotesize}
+\defbibenvironment{bibliography}
+  {\noindent}
+  {\unspace}
+  {}
+
+\renewbibmacro*{begentry}{%
+  \usebeamercolor{bibliography item}%
+  \color{bibliography item.fg}%
+  \printtext[labelnumberwidth]{%
+    \printfield{prefixnumber}%
+    \printfield{labelnumber}%
+  }%
+  \setunit{\addnbspace}%
+}
+\renewcommand*{\finentrypunct}{\addperiod\space}
+
+\newlength{\thirdtextwidth}
+\setlength\thirdtextwidth{0.333333\textwidth}
+
+
+\title{Ein \texttt{beamer}-Poster für die TU Dortmund}
+\author{Maximilian Nöthe}
+\date{4. Juli 2015}
+
+\titlegraphic{%
+  \includegraphics[width=0.6\linewidth]{example-image-a}
+}
+\institute{%
+  \includegraphics[width=0.9\linewidth]{tudo.pdf}%
+}
+
+\begin{document}
+  \begin{columns}[onlytextwidth]%
+    \begin{column}{0.5\textwidth}%
+      \begin{block}[equal height group=A]{Test}%
+        \begin{multicols}{2}
+          \begin{figure}
+            \includegraphics[width=\linewidth]{example-image-a}\\
+            \caption{Toller Plot.}
+          \end{figure}
+          \columnbreak
+          Diese Blöcke sind keine \texttt{beamer} Blöcke mehr,
+          sondern stammen aus dem großartigem Paket \texttt{tcolorbox}.
+          Sie können mit dem optionalen Argument stark angepasst werden.
+        \end{multicols}
+      \end{block}%
+    \end{column}%
+    \begin{column}{0.5\textwidth}%
+      \begin{alertblock}[equal height group=A]{Test}%
+        \begin{multicols}{2}
+          \blindtext
+          \blindtext
+        \end{multicols}
+      \end{alertblock}%
+    \end{column}%
+  \end{columns}%
+  \begin{columns}[c, onlytextwidth]%
+    \begin{column}{\thirdtextwidth}%
+      \begin{exampleblock}{Test}%
+        \blindtext%
+      \end{exampleblock}%
+    \end{column}%
+    \begin{column}{\thirdtextwidth}%
+      \begin{block}{Test}%
+        \blindtext%
+      \end{block}%
+    \end{column}%
+    \begin{column}{\thirdtextwidth}%
+      \begin{block}{Test}%
+        \blindtext%
+      \end{block}%
+    \end{column}%
+  \end{columns}%
+  \begin{columns}[onlytextwidth]%
+    \begin{column}{0.5\textwidth}%
+      \begin{block}{Test}%
+        \blindtext%
+      \end{block}%
+    \end{column}%
+    \begin{column}{0.5\textwidth}%
+      \begin{block}{Test}%
+        \blindtext%
+      \end{block}%
+    \end{column}%
+  \end{columns}%
+  \begin{columns}[t, onlytextwidth]
+    \begin{column}{2\thirdtextwidth}
+      \begin{block}[equal height group=4]{Bla}
+        \blindtext
+        \blindtext
+      \end{block}
+    \end{column}
+    \begin{column}{\thirdtextwidth}
+      \begin{block}[equal height group=4]{Bla}
+        \blindtext
+      \end{block}
+    \end{column}
+  \end{columns}
+
+
+
+  \vspace*{\fill}
+  \begin{block}[equal height group=bottom, fonttitle=\normalsize]{Referenzen}
+    \begin{multicols}{3}
+      \nocite{*}\footnotesize%
+      \printbibliography%
+    \end{multicols}
+  \end{block}
+\end{document}
