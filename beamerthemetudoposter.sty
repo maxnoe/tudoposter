@@ -33,6 +33,12 @@
 \colorlet{tuYellow}{yellow!70!red}
 \colorlet{tuRed}{red!80!black}
 
+%% modify the lists
+\RequirePackage{enumitem}
+\setlist[itemize]{font=\color{tugreen}\bfseries, label=\textbullet}
+\setlist[enumerate]{font=\color{tugreen}\bfseries, label=\arabic*.}
+\setlist[description]{font=\color{tugreen}\bfseries}
+
 %% bibliography settings
 \setbeamertemplate{bibliography item}[text]
 
@@ -109,35 +115,41 @@
 \setbeamertemplate{navigation symbols}{}
 
 \setbeamertemplate{headline}{
-  \vspace*{2cm}
-  \hspace*{2cm}
-  \begin{minipage}{0.25\paperwidth-2cm}%
-    \begin{beamercolorbox}[wd=\linewidth, left]{institute}%
-      \vbox to 10cm{\usebeamercolor{institute}\usebeamerfont{institute}\inserttitlegraphic\par\vfil}%
-    \end{beamercolorbox}%
-  \end{minipage}%
-  \hspace*{1cm}%
-  \begin{minipage}{0.5\paperwidth-2cm}%
-    \begin{beamercolorbox}[wd=\linewidth, center]{title}%
-      \usebeamercolor{title}\usebeamerfont{title}\inserttitle\par%
-    \end{beamercolorbox}%
-    \vspace*{1cm}
-    \begin{beamercolorbox}[wd=\linewidth, center]{author}%
-      \usebeamercolor{author}\usebeamerfont{author}\insertauthor\par%
-    \end{beamercolorbox}%
+  \begin{beamercolorbox}[ht=2cm, wd=\paperwidth]{headline}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}%
+    \hspace*{2cm}%
+    \begin{minipage}{0.2\paperwidth-2cm}%
+      \begin{beamercolorbox}[wd=\linewidth, center]{institute}%
+        \usebeamercolor{institute}\usebeamerfont{institute}\inserttitlegraphic\par%
+      \vspace*{1cm}%
+      \end{beamercolorbox}%
+    \end{minipage}%
+    \hspace*{1cm}%
+    \begin{minipage}{0.6\paperwidth-2cm}%
+      \begin{beamercolorbox}[wd=\linewidth, center]{title}%
+        \usebeamercolor{title}\usebeamerfont{title}\inserttitle\par%
+      \end{beamercolorbox}%
+      \vspace*{1cm}
+      \begin{beamercolorbox}[wd=\linewidth, center]{author}%
+        \usebeamercolor{author}\usebeamerfont{author}\insertauthor\par%
+      \end{beamercolorbox}%
     \vspace*{1cm}
     \begin{beamercolorbox}[wd=\linewidth, center]{date}%
       \usebeamercolor{date}\usebeamerfont{date}\insertdate\par%
     \end{beamercolorbox}%
-  \end{minipage}%
-  \hspace*{1cm}%
-  \begin{minipage}{0.25\paperwidth-2cm}%
-    \begin{beamercolorbox}[wd=\linewidth, right]{institute}%
-       \vbox to 10cm{\usebeamercolor{institute}\usebeamerfont{institute}\insertinstitute\par\vfil}%%
-    \end{beamercolorbox}%
-  \end{minipage}%
-  \vspace*{1cm}%
+    \end{minipage}%
+    \hspace*{1cm}%
+    \begin{minipage}{0.2\paperwidth-2cm}%
+      \begin{beamercolorbox}[wd=\linewidth, center]{institute}%
+        \usebeamercolor{institute}\usebeamerfont{institute}\insertinstitute\par%
+      \vspace*{1cm}%
+      \end{beamercolorbox}%
+    \end{minipage}%
+  \end{beamercolorbox}%
+  \vspace*{0.5cm}
 }
+
 
 \setbeamertemplate{footline}{\vspace*{1cm}}
 
@@ -157,25 +169,25 @@
 
 %% colors %%
 
-\setbeamercolor*{author}{fg=black, bg=white}
-\setbeamercolor*{institute}{fg=black, bg=gray}
+\setbeamercolor*{background canvas}{bg=tulight}
 
 \setbeamercolor*{headline}{fg=tugreen, bg=white}
 \setbeamercolor*{footline}{fg=tugreen, bg=white}
 
+\setbeamercolor*{author}{fg=black, bg=white}
 \setbeamercolor*{title}{fg=black, bg=white}
 \setbeamercolor*{institute}{fg=black, bg=white}
 
 \setbeamercolor*{item}{fg=tugreen, bg=black}
 
 \setbeamercolor*{block title}{fg=white, bg=tugreen}
-\setbeamercolor*{block body}{fg=black, bg=tulight}
+\setbeamercolor*{block body}{fg=black, bg=white}
 
 \setbeamercolor*{block title alerted}{fg=white, bg=tuRed}
-\setbeamercolor*{block body alerted}{fg=black, bg=tuRed!10!white}
+\setbeamercolor*{block body alerted}{fg=black, bg=white}
 
 \setbeamercolor*{block title example}{fg=white, bg=tuYellow}
-\setbeamercolor*{block body example}{fg=black, bg=tuYellow!10!white}
+\setbeamercolor*{block body example}{fg=black, bg=white}
 
 \setbeamercolor*{caption name}{fg=tudark}
 \setbeamercolor*{caption}{fg=black}
