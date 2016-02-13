@@ -6,3 +6,5 @@ They are included in TeX-Live or you can download them [here](http://downloads.s
 
 The example is made using lualatex, but the style file `beamerthemetudoposter.sty`
 is also compatible with pdflatex and xelatex.
+
+![example](example.png)
